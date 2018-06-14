@@ -2,3 +2,26 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.cars-layout{
+  display: flex;
+}
+.garage-box{
+  width:40%;
+  height: 100vh;
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px black solid;
+}
+.cars-box{
+  width:60%;
+  padding: 10px;
+}
+.form-box{
+  width:60%;
+  padding: 10px;
+}
+.car-box{
+  width:60%;
+  padding: 10px;
+}
