@@ -12,6 +12,10 @@ class CarsIndex extends Component {
     this.props.fetchCars(this.props.garageName);
   }
 
+  componentDidMount(){
+    this.props.fetchCars(this.props.garageName);
+  }
+
   renderCarList(){
     return(
       <div className="cars-box">

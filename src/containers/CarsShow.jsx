@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import Garage from '../components/Garage';
 //import action creators
 import {fetchCar} from '../actions';
+import {deleteCar} from '../actions';
 
 class CarsShow extends Component{
 
@@ -14,6 +15,11 @@ class CarsShow extends Component{
     }
   }
 
+  handleClick = () => {
+    this.props.deleteCar(this.props.match.params.id);
+    this.props.history.push('/'); // Navigate after submit
+  }
+
   renderCar(){
     let {brand, model, owner, plate} = this.props.car;
     return(
@@ -21,22 +27,28 @@ class CarsShow extends Component{
         <h3>{`${brand} - ${model}`}</h3>
         <h4>{`Owner: ${owner}`}</h4>
         <h4>{plate}</h4>
+        <div className="btn btn-danger" onClick={this.handleClick}>Delete</div>
       </div>
     );
   }
 
   render(){
+    if(!this.props.car){
+      return(
+        <div>Loading...</div>
+      );
+    }
     return(
       <div className="cars-layout">
         <Garage garageName={this.props.car.garage}/>
-        {this.renderCar()};
+        {this.renderCar()}
       </div>
     );
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({fetchCar},dispatch);
+  return bindActionCreators({fetchCar, deleteCar},dispatch);
 }
 
 function mapStateToProps(state, ownProps) {
